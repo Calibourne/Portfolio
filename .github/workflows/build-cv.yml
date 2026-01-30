@@ -20,9 +20,11 @@ jobs:
         run: |
           set -euo pipefail
           curl --proto '=https' --tlsv1.2 -fsSL https://drop-sh.fullyjustified.net | sh
-          # The installer typically places binaries in ~/.local/bin
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
+          # installer unpacks `tectonic` into the current directory
+          chmod +x ./tectonic
+          sudo mv ./tectonic /usr/local/bin/tectonic
           tectonic --version
+
 
       - name: Build CV
         working-directory: cv
