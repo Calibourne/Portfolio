@@ -29,16 +29,16 @@ jobs:
         with:
           path: ~/.cache/Tectonic
           key: tectonic-${{ runner.os }}
-
-      - name: Sanity check PDF
-        run: test -f cv/cv.pdf
-
+          
       - name: Build CV
         working-directory: cv
         shell: bash
         run: |
           set -euo pipefail
           tectonic -X compile cv.tex --outdir . --keep-logs
+
+      - name: Sanity check PDF
+        run: test -f cv/cv.pdf
 
       - name: Upload CV artifact
         uses: actions/upload-artifact@v4
