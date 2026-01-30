@@ -1,0 +1,31 @@
+name: Build CV
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "cv/**"
+  workflow_dispatch:
+
+jobs:
+  build_cv:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Tectonic
+        uses: taiki-e/install-action@v2
+        with:
+          tool: tectonic
+
+      - name: Build CV
+        working-directory: cv
+        run: |
+          tectonic -X compile cv.tex --outdir . --keep-logs
+
+      - name: Upload CV artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cv-pdf
+          path: cv/cv.pdf
