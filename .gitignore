@@ -20,10 +20,11 @@ cv/*.synctex.gz
 cv/*.fls
 cv/*.fdb_latexmk
 cv/*.xdv
+cv/coverletter.tex
 
 # ---- Generated PDF (optional) ----
 # If you ONLY want CI to generate cv.pdf, ignore it:
-# cv/cv.pdf
+cv/cv.pdf
 
 # If you want to COMMIT cv.pdf, comment the above and DO NOT ignore it
 
